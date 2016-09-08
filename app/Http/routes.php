@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('personal');
 });
 Route::get('/blog','BlogsController@index');
+// Route::get('/blog/admin','BlogsController@index');
+Route::get('/blog/admin', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@showLoginForm']);
 
-Route::auth();
+
+// Route::auth();
 
 Route::get('/home', 'HomeController@index');
