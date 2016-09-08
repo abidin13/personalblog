@@ -12,8 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('personal');
 });
+Route::get('/blog','BlogsController@index');
 
 Route::auth();
 
