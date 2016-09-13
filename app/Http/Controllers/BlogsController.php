@@ -15,7 +15,7 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        return view('blogs.home');
+        return view('blogs.home')->withTitle('Febriyant Blog');
     }
 
     /**
