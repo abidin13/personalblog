@@ -8,9 +8,9 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="assets/css/bundle.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel='stylesheet' type='text/css'>
     <!-- default or custom css -->
-    <link href="assets/css/default.css" rel="stylesheet">
+    <link href="{{ asset('css/default-admin.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -129,6 +129,9 @@
                     </header>
                     <!-- header end here -->
                 </div>
+                <div id="content">
+                    @yield('content')
+                </div>
                 <div class="row">
                     <footer id="admin-footer" class="clearfix">
                         <div class="pull-left"><b>Copyright</b> &copy; 2015</div>
@@ -140,7 +143,75 @@
     </div>
 
     <!-- js for jquery and bootstrap --> 
-    <script type="text/javascript" src="assets/js/bundle.js"></script>
-    <script type="text/javascript" src="main/default.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/default-admin.js') }}"></script>
+    <script>
+(function(w,d,s,g,js,fs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+  js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+}(window,document,'script'));
+</script>
+
+<script>
+
+gapi.analytics.ready(function() {
+
+  /**
+   * Authorize the user immediately if the user has already granted access.
+   * If no access has been created, render an authorize button inside the
+   * element with the ID "embed-api-auth-container".
+   */
+  gapi.analytics.auth.authorize({
+    container: 'embed-api-auth-container',
+    clientid: 'UA-83413016-1'
+  });
+
+
+  /**
+   * Create a new ViewSelector instance to be rendered inside of an
+   * element with the id "view-selector-container".
+   */
+  var viewSelector = new gapi.analytics.ViewSelector({
+    container: 'view-selector-container'
+  });
+
+  // Render the view selector to the page.
+  viewSelector.execute();
+
+
+  /**
+   * Create a new DataChart instance with the given query parameters
+   * and Google chart options. It will be rendered inside an element
+   * with the id "chart-container".
+   */
+  var dataChart = new gapi.analytics.googleCharts.DataChart({
+    query: {
+      metrics: 'ga:sessions',
+      dimensions: 'ga:date',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday'
+    },
+    chart: {
+      container: 'chart-container',
+      type: 'LINE',
+      options: {
+        width: '100%'
+      }
+    }
+  });
+
+
+  /**
+   * Render the dataChart on the page whenever a new view is selected.
+   */
+  viewSelector.on('change', function(ids) {
+    dataChart.set({query: {ids: ids}}).execute();
+  });
+
+});
+</script>
   </body>
 </html>

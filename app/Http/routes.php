@@ -11,25 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('personal');
+Route::group(['middleware' => 'web'], function() {
+    Route::get('/', function () {
+    	return view('personal');
+	});
+	Route::get('/blog','BlogsController@index');
+	Route::get('/home', 'HomeController@index');
+	Route::group(['prefix' => 'blog/admin'], function() {
+		// Route::auth();
+		Route::get('/', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@showLoginForm']);
+		Route::post('postlogin', ['as' => 'auth.postlogin', 'uses' => 'Auth\AuthController@login']);
+		Route::get('logout', ['as' => 'auth.logout', 'uses' => 'Auth\AuthController@logout']);
+
+		// // // Registration Routes...
+		// // Route::get('register', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@showRegistrationForm']);
+		// // Route::post('register', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@register']);
+
+		// // Password Reset Routes...
+		// Route::get('password/reset/{token?}', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@showResetForm']);
+		// Route::post('password/email', ['as' => 'auth.password.email', 'uses' => 'Auth\PasswordController@sendResetLinkEmail']);
+		// Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@reset']);
+		Route::group(['middleware' => ['auth','role:admin']], function() {
+			Route::resource('dashboard','AdminController');
+		});
+	});
 });
-Route::get('/blog','BlogsController@index');
 
-// Route::auth();
-Route::get('/home', 'HomeController@index');
-Route::group(['prefix' => 'blog/admin'], function() {
-	// Route::auth();
-	Route::get('/', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@showLoginForm']);
-	Route::post('postlogin', ['as' => 'auth.postlogin', 'uses' => 'Auth\AuthController@login']);
-	Route::get('logout', ['as' => 'auth.logout', 'uses' => 'Auth\AuthController@logout']);
-
-	// // // Registration Routes...
-	// // Route::get('register', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@showRegistrationForm']);
-	// // Route::post('register', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@register']);
-
-	// // Password Reset Routes...
-	// Route::get('password/reset/{token?}', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@showResetForm']);
-	// Route::post('password/email', ['as' => 'auth.password.email', 'uses' => 'Auth\PasswordController@sendResetLinkEmail']);
-	// Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@reset']);
-});
