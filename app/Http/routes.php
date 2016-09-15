@@ -33,6 +33,7 @@ Route::group(['middleware' => 'web'], function() {
 		// Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@reset']);
 		Route::group(['middleware' => ['auth','role:admin']], function() {
 			Route::resource('dashboard','AdminController');
+			Route::resource('articles', 'ArticleController');
 		});
 	});
 });
