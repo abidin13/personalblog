@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use Yajra\Datatables\Html\Builder;
+use Yajra\Datatables\Datatables;
+use App\Posts;
 
 class ArticleController extends Controller
 {
@@ -13,9 +19,18 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Builder $htmlBuilder)
     {
-        return view('blogs.admin.articles');
+        if ($request->ajax()) {
+            $posts = Posts::with('user');
+            return Datatables::of($posts)->make(true);
+        }
+        $html = $htmlBuilder
+            ->addColumn(['data' => 'post_title', 'name' => 'post_title', 'title' => 'Article Title'])
+            ->addColumn(['data' => 'users.name', 'name' => 'users.name', 'title' => 'Post Author'])
+            ->addColumn(['data' => 'created_at', 'name' => 'created_at', 'title' => 'Date']);
+
+        return view('blogs.admin.viewarticles')->with(compact('html'));
     }
 
     /**
@@ -25,7 +40,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('blogs.admin.articles');
     }
 
     /**

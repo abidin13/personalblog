@@ -9,6 +9,8 @@
             <link href="{{ asset('css/bootstrap.min.css') }}" rel='stylesheet' type='text/css'>
             <!-- default or custom css -->
             <link href="{{ asset('css/default-admin.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/jquery.dataTables.css') }}" rel='stylesheet' type='text/css'>
+            <link href="{{ asset('css/dataTables.bootstrap.css') }}" rel='stylesheet' type='text/css'>
         </head>
         <body>
             <div class="container-fluid display-table">
@@ -33,8 +35,8 @@
                                     <span class="label label-success pull-right hidden-xs hidden-sm">20</span>
                                 </a>
                                 <ul class="collapse collapseable" id="collapse-post">
-                                    <li><a href="{{ route('blog.admin.articles.index')}}">Create New</a></li>
-                                    <li><a href="articles.html">View Article</a></li>
+                                    <li><a href="{{ route('blog.admin.articles.create')}}">Create New</a></li>
+                                    <li><a href="{{ route('blog.admin.articles.index')}}">View Article</a></li>
                                 </ul>
                             </li>
                             <li class="link">
@@ -135,5 +137,8 @@
             <script src="{{ asset('js/jquery.min.js') }}"></script>
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
             <script src="{{ asset('js/default-admin.js') }}"></script>
+            <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+            <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+            @yield('scripts')
         </body>
     </html>

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use App\Posts;
 
 class User extends Authenticatable
 {
@@ -26,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function Posts()
+    public function posts()
     {
         return $this->hasMany('App\Posts');
     }
