@@ -1,11 +1,35 @@
 @extends('layouts.adminblog')
 @section('content')
-	<header>
-		<h2>Create Article</h2>
+	<header class="clearfix">
+		<h2 class="page_title pull-left">Create Article</h2>
 	</header>
-	<div class="row">
-		<div class="col-md-12">
-			<h1>Test</h1>
+	<div class="content-inner">
+		<div class="row">
+			<div class="col-md-12">
+                {!! Form::open(['url' => 'blog.admin.articles.store', 'method' => 'post' ,'class' => 'form-horizontal']) !!}
+    				@include('blogs.admin._formArticle')
+				{!! Form::close() !!}
+			</div>
 		</div>
 	</div>
 @stop
+@section('scripts')
+	<script type="text/javascript">
+        var config = {
+            '.chosen-select' : {},
+            '.chosen-select-deselect' : {allow_single_deselect: true},
+            '.chosen-select-no-single' : {disable_search_threshold: 10},
+            '.chosen-select-no-result' : {no_result_text: 'Opps, Nothing Found'},
+            '.chosen-select-width' : {width:"95%"}
+        }
+
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    </script>
+    <script type="text/javascript">
+        $('.summernote').summernote({
+            height:200
+        })
+    </script>
+@endsection

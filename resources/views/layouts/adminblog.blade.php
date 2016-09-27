@@ -11,6 +11,9 @@
             <link href="{{ asset('css/default-admin.css') }}" rel="stylesheet">
             <link href="{{ asset('css/jquery.dataTables.css') }}" rel='stylesheet' type='text/css'>
             <link href="{{ asset('css/dataTables.bootstrap.css') }}" rel='stylesheet' type='text/css'>
+            <link href="{{ asset('css/dataTables.bootstrap.css') }}" rel='stylesheet' type='text/css'>
+            <link href="{{ asset('chosen/css/chosen.min.css') }}" rel='stylesheet' type='text/css'>
+            <link href="{{ asset('summernote/summernote.css') }}" rel='stylesheet' type='text/css'>
         </head>
         <body>
             <div class="container-fluid display-table">
@@ -139,6 +142,8 @@
             <script src="{{ asset('js/default-admin.js') }}"></script>
             <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+            <script src="{{ asset('chosen/js/chosen.jquery.min.js') }}"></script>
+            <script src="{{ asset('summernote/summernote.min.js') }}"></script>
             @yield('scripts')
         </body>
     </html>
