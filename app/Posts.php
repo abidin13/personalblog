@@ -2,14 +2,15 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
-use Session;
-use App\User;
+
+
 
 class Posts extends Model
 {
-    public function user(){
-    	return $this->belongsTo('App\User');
+    public function users(){
+    	return $this->belongsTo('App\User','post_author');
     }
     
     protected $fillable = ['post_author','post_title','post_content','post_status'];
+    
 }
