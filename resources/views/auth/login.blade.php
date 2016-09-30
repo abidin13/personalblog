@@ -8,6 +8,7 @@
                 <div class="form-wrap">
                 <h1>Log in with your email account</h1>
                     {!! Form::open(['url'=>'blog/admin/postlogin', 'autocomplete'=>'off', 'id'=>'login-form']) !!}
+                    {!! Form::hidden('_token', csrf_token()) !!}
                     <div class="form-group{{ $errors->has('email') ? ' has-error': ''}}">
                         {!! Form::label('email', 'Email', ['class'=>'sr-only']) !!}
                         {!! Form::email('email', null, ['class'=>'form-control','placeholder'=>'somebody@example.com', 'id'=>'email','name'=>'email']) !!}

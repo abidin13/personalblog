@@ -34,6 +34,7 @@ Route::group(['middleware' => 'web'], function() {
 		Route::group(['middleware' => ['auth','role:admin']], function() {
 			Route::resource('dashboard','AdminController');
 			Route::resource('articles', 'ArticleController');
+			// Route::post('articles', ['as' => 'blog.admin.articles.store', 'uses' => 'ArticleController@store']);
 		});
 	});
 });

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use App\Posts;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
+use App\Tags;
 use Carbon\Carbon;
 
 
@@ -25,12 +27,22 @@ class ArticleController extends Controller
     {
         if ($request->ajax()) {
             $post = Posts::with('users')->get();
-            return Datatables::of($post)->make(true);
+            return Datatables::of($post)
+            ->addColumn('action', function ($posts)
+                {
+                    return view('blogs.admin._actionArticle',[
+                            'model'           => $posts,
+                            'form_url'        => route('blog.admin.articles.destroy', $posts->id),
+                            'edit_url'        => route('blog.admin.articles.edit', $posts->id),
+                            'confirm_message' => 'Yakin mau menghapus ' .$posts->post_title .'?'
+                        ]);
+                })->make(true);
         }
         $html = $htmlBuilder
             ->addColumn(['data' => 'post_title', 'name' => 'post_title', 'title' => 'Article Title'])
             ->addColumn(['data' => 'users.name', 'name' => 'users.name', 'title' => 'Post Author', 'orderable'=> false])
-            ->addColumn(['data' => 'created_at', 'name' => 'created_at', 'title' => 'Date']);
+            ->addColumn(['data' => 'created_at', 'name' => 'created_at', 'title' => 'Date'])
+            ->addColumn(['data'=>'action', 'name'=>'action','title'=>'','orderable'=>false, 'searchable' => false]);
 
         return view('blogs.admin.viewarticles')->with(compact('html'));
     }
@@ -51,9 +63,16 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        //
+        // $this->validate($request,['title'=>'required|max:50', 'content'=>'required']);
+        $user = Auth::user();
+        $postscontent = new Posts;
+        $postscontent->post_author = $user->id;
+        $postscontent->post_title = $request->title;
+        $postscontent->post_content = $request->content;
+        $postscontent->save();
+        return redirect()->route('blog.admin.articles.index');
     }
 
     /**
