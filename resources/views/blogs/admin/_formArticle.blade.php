@@ -2,9 +2,9 @@
 </html>
 <div class="form-group {{ $errors->has('name') ? ' has-error':'' }}">
 	<div class="col-md-12">
-		{!! Form::label('title', 'Title', ['class'=>'']) !!}
-		{!! Form::text('title', null, ['class'=>'form-control','placeholder'=>'Title','id'=>'title']) !!}
-		{!! $errors->first('title','<p class="help-block">:message</p>') !!}
+		{!! Form::label('post_title', 'Title', ['class'=>'']) !!}
+		{!! Form::text('post_title', null, ['class'=>'form-control','placeholder'=>'Title','id'=>'title']) !!}
+		{!! $errors->first('post_title','<p class="help-block">:message</p>') !!}
 	</div>
 </div>
 <div class="form-group {{ $errors->has('tags') ? ' has-error':'' }}">
@@ -17,11 +17,11 @@
 </div>
 <div class="form-group {{ $errors->has('content') ? ' has-error':'' }}">
 	<div class="col-md-12">
-		{!! Form::label('content', 'Content', ['class'=>'']) !!}
-		{!! Form::textarea('content', null, ['class' => 'summernote', 'placeholder' => 'article']) !!}
+		{!! Form::label('post_content', 'Content', ['class'=>'']) !!}
+		{!! Form::textarea('post_content', null, ['class' => 'summernote', 'placeholder' => 'article']) !!}
 		        <!-- <textarea name="article" class="summernote"></textarea> -->
 		        <!-- <textarea name="article" class="summernote" placeholder="Article"></textarea> -->
-	    {!! $errors->first('content','<p class="help-block">:message</p>') !!}
+	    {!! $errors->first('post_content','<p class="help-block">:message</p>') !!}
 	</div>
 </div>
 <div class="form-group">

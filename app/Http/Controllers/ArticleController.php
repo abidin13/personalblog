@@ -41,7 +41,7 @@ class ArticleController extends Controller
         $html = $htmlBuilder
             ->addColumn(['data' => 'post_title', 'name' => 'post_title', 'title' => 'Article Title'])
             ->addColumn(['data' => 'users.name', 'name' => 'users.name', 'title' => 'Post Author', 'orderable'=> false])
-            ->addColumn(['data' => 'created_at', 'name' => 'created_at', 'title' => 'Date'])
+            ->addColumn(['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Date'])
             ->addColumn(['data'=>'action', 'name'=>'action','title'=>'','orderable'=>false, 'searchable' => false]);
 
         return view('blogs.admin.viewarticles')->with(compact('html'));
@@ -63,14 +63,14 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleRequest $request)
+    public function store(Request $request)
     {
-        // $this->validate($request,['title'=>'required|max:50', 'content'=>'required']);
+        $this->validate($request,['post_title'=>'required|max:50', 'post_content'=>'required']);
         $user = Auth::user();
         $postscontent = new Posts;
         $postscontent->post_author = $user->id;
-        $postscontent->post_title = $request->title;
-        $postscontent->post_content = $request->content;
+        $postscontent->post_title = $request->post_title;
+        $postscontent->post_content = $request->post_content;
         $postscontent->save();
         return redirect()->route('blog.admin.articles.index');
     }
@@ -94,7 +94,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Posts::find($id);
+        return view('blogs.admin.articlesEdit')->with(compact('post'));
     }
 
     /**
@@ -106,7 +107,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Posts::findOrFail($id);
+        $this->validate($request,['post_title'=>'required|max:50', 'post_content'=>'required']);
+        $user = Auth::user();
+        $post->post_author = $user->id;
+        $post->post_title = $request->post_title;
+        $post->post_content = $request->post_content;
+        $post->updated_at = Carbon::now('Asia/Jakarta');
+        $post->save();
+        return redirect()->route('blog.admin.articles.index');
     }
 
     /**
