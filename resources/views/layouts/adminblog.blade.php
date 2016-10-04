@@ -145,6 +145,7 @@
             <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
             <script src="{{ asset('chosen/js/chosen.jquery.min.js') }}"></script>
             <script src="{{ asset('summernote/summernote.min.js') }}"></script>
+            <script src="{{ asset('js/admin.js') }}"></script>
             @yield('scripts')
         </body>
     </html>

@@ -551,6 +551,7 @@ return array(
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'TagsDetail' => $baseDir . '/database/migrations/2016_09_28_122313_tags_detail.php',
+    'TagsPosts' => $baseDir . '/database/migrations/2016_10_03_050039_TagsPosts.php',
     'TagsSeeder' => $baseDir . '/database/seeds/TagsSeeder.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',

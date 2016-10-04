@@ -12,7 +12,7 @@ use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use App\Posts;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
-use App\Tags;
+use App\TagsPosts;
 use Carbon\Carbon;
 
 
@@ -65,13 +65,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,['post_title'=>'required|max:50', 'post_content'=>'required']);
+        $this->validate($request,['tags'=>'required','post_title'=>'required|max:50', 'post_content'=>'required']);
         $user = Auth::user();
         $postscontent = new Posts;
         $postscontent->post_author = $user->id;
         $postscontent->post_title = $request->post_title;
         $postscontent->post_content = $request->post_content;
         $postscontent->save();
+        // $postscontent->postTagsid()->sync((array)$request->get('tags'));
+
+        foreach ((array)$request->get('tags') as $result) {
+            $tagss = new TagsPosts;
+            $tagss->post_id = $postscontent->id;
+            $tagss->tags_id = $result;
+            $tagss->save();
+        }
         return redirect()->route('blog.admin.articles.index');
     }
 
@@ -126,6 +134,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Posts::find($id);
+        $post->delete();
+        return redirect()->route('blog.admin.articles.index');
     }
 }

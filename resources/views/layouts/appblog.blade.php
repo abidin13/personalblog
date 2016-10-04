@@ -46,6 +46,9 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <a href="{!! route('auth.login') !!}">Admin</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

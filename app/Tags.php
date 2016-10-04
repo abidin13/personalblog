@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tags extends Model
 {
-    protected $table = 'tags';
     protected $fillable = ['name'];
 
-    // public function PostTags()
-    // {
-    //     return $this->belongsToMany('App\Post','id');
-    // }
+    public function tagsIdPost()
+    {
+        return $this->belongsToMany('App\TagsPosts','posts_tags','post_id','tags_id');
+    }
     
 }

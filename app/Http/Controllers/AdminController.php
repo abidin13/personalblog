@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
+use Entrust;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,18 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('blogs.admin.homeadmin');
+        if (Entrust::hasRole('admin')) {
+            return view('blogs.admin.homeadmin');
+        }else {
+            return view('personal');
+        }
+
+        // if (Entrust::hasRole('member')) {
+        //     return $this->memberDashboard();
+        // }
+
+        
+        
     }
 
     /**

@@ -897,6 +897,7 @@ class ComposerStaticInit0b9abbe85ce368593c2b3d1b278e7a0d
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'TagsDetail' => __DIR__ . '/../..' . '/database/migrations/2016_09_28_122313_tags_detail.php',
+        'TagsPosts' => __DIR__ . '/../..' . '/database/migrations/2016_10_03_050039_TagsPosts.php',
         'TagsSeeder' => __DIR__ . '/../..' . '/database/seeds/TagsSeeder.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
