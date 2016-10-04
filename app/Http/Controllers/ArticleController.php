@@ -13,6 +13,7 @@ use Yajra\Datatables\Datatables;
 use App\Posts;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use App\TagsPosts;
+use App\Tags;
 use Carbon\Carbon;
 
 
@@ -26,8 +27,9 @@ class ArticleController extends Controller
     public function index(Request $request, Builder $htmlBuilder)
     {
         if ($request->ajax()) {
-            $post = Posts::with('users')->get();
-            return Datatables::of($post)
+            $post = Posts::with('users','postTagsid')->get();
+            $tags = Tags::with('tagsIdPost')->get();
+            return Datatables::of($post, $tags)
             ->addColumn('action', function ($posts)
                 {
                     return view('blogs.admin._actionArticle',[
@@ -40,7 +42,7 @@ class ArticleController extends Controller
         }
         $html = $htmlBuilder
             ->addColumn(['data' => 'post_title', 'name' => 'post_title', 'title' => 'Article Title'])
-            ->addColumn(['data' => 'users.name', 'name' => 'users.name', 'title' => 'Post Author', 'orderable'=> false])
+            ->addColumn(['data' => 'users.name', 'name' => 'users.name', 'title' => 'Post Author'])
             ->addColumn(['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Date'])
             ->addColumn(['data'=>'action', 'name'=>'action','title'=>'','orderable'=>false, 'searchable' => false]);
 

@@ -12,7 +12,7 @@ class TagsPosts extends Migration
      */
     public function up()
     {
-        Schema::create('tags_posts', function (Blueprint $table) {
+        Schema::create('posts_tags', function (Blueprint $table) {
             $table->increments('id');
             $table->biginteger('post_id');
             $table->biginteger('tags_id');
@@ -27,6 +27,6 @@ class TagsPosts extends Migration
      */
     public function down()
     {
-        Schema::drop('tags_posts');
+        Schema::drop('posts_tags');
     }
 }
