@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Posts;
+use App\Tags;
+use App\TagsPosts;
+use Carbon\Carbon;
 
 class BlogsController extends Controller
 {
@@ -15,7 +18,8 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        return view('blogs.home');
+        $post = Posts::with('users')->get();
+        return view('blogs.home')->with(compact('post'));
     }
 
     /**

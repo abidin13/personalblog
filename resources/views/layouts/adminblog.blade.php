@@ -25,6 +25,7 @@
                         <ul>
                             <?php 
                                 $url = Request::segment(3);
+                                $url2 = Request::segment(4);
                             ?>
                             <li class="link @if($url=="dashboard") active @endif">
                                 <a href="{{route('blog.admin.dashboard.index')}}">
@@ -38,9 +39,13 @@
                                     <span class="hidden-xs hidden-sm">Article</span>
                                     <span class="label label-success pull-right hidden-xs hidden-sm">20</span>
                                 </a>
-                                <ul class="collapse collapseable" id="collapse-post">
-                                    <li><a href="{{ route('blog.admin.articles.create')}}">Create New</a></li>
-                                    <li><a href="{{ route('blog.admin.articles.index')}}">View Article</a></li>
+                                <ul class="collapse collapseable @if($url2=="create" || $url=="articles" ) in @endif" id="collapse-post">
+                                    <li><a href="{{ route('blog.admin.articles.create')}}" style="@if ($url2=="create") color: #fff;
+                                    @endif">Create New</a></li>
+                                    <li><a href="{{ route('blog.admin.articles.index')}}" style="@if ($url=="articles" && $url2=="")
+                                        color:#fff;
+                                    @else
+                                    @endif">View Article</a></li>
                                 </ul>
                             </li>
                             <li class="link">

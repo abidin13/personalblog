@@ -15,6 +15,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use App\TagsPosts;
 use App\Tags;
 use Carbon\Carbon;
+use DB;
 
 
 class ArticleController extends Controller
@@ -27,10 +28,9 @@ class ArticleController extends Controller
     public function index(Request $request, Builder $htmlBuilder)
     {
         if ($request->ajax()) {
-            $post = Posts::with('users','postTagsid')->get();
-            $tags = Tags::with('tagsIdPost')->get();
-            return Datatables::of($post, $tags)
-            ->addColumn('action', function ($posts)
+             $post = Posts::with('users')->get();
+             return Datatables::of($post)
+                ->addColumn('action', function ($posts)
                 {
                     return view('blogs.admin._actionArticle',[
                             'model'           => $posts,
