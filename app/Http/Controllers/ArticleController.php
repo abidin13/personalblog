@@ -15,7 +15,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use App\TagsPosts;
 use App\Tags;
 use Carbon\Carbon;
-// use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use DB;
 
 
@@ -29,7 +29,9 @@ class ArticleController extends Controller
     public function index(Request $request, Builder $htmlBuilder)
     {
         if ($request->ajax()) {
-             $post = Posts::with('users')->get();
+             $post = Posts::with('users')
+                        ->orderBy('updated_at', 'desc')
+                        ->get();
              return Datatables::of($post)
                 ->addColumn('action', function ($posts)
                 {
@@ -71,7 +73,7 @@ class ArticleController extends Controller
         $this->validate($request,['tags'=>'required',
                                     'post_title'=>'required|max:50', 
                                     'post_content'=>'required', 
-                                    'post_image' => 'required'
+                                    'post_image' => 'mimes:jpg,png|max:2048'
                                 ]);
         $user = Auth::user();
         $postscontent = new Posts;
@@ -83,15 +85,16 @@ class ArticleController extends Controller
         $postscontent->updated_at = Carbon::now('Asia/Jakarta');
         $postscontent->save();
         $postscontent->Tagss()->sync((array)$request->get('tags'));
+        
+        return redirect()->route('blog.admin.articles.index');
 
+        
         // foreach ((array)$request->get('tags') as $result) {
         //     $tagss = new TagsPosts;
         //     $tagss->post_id = $postscontent->id;
         //     $tagss->tags_id = $result;
         //     $tagss->save();
         // }
-        return $postscontent;
-        // return redirect()->route('blog.admin.articles.index');
     }
 
     /**
@@ -150,24 +153,15 @@ class ArticleController extends Controller
         return redirect()->route('blog.admin.articles.index');
     }
 
-    public function upload($postimage)
+    public function upload(UploadedFile $file)
     {
-        if ($postimage->hasFile('post_image')) {
-            // mengambil file yang diupload
-            $uploaded_cover = $this->postimage;
+        $original = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $sanitize = preg_replace('/[^a-zA-Z0-9]+/', '-', $original);
+        $fileName = $sanitize . '.' . $file->getClientOriginalExtension();
+        $destination = public_path() . DIRECTORY_SEPARATOR . 'img/cover';
 
-            // mengambil extension file
-            $extension = $uploaded_cover->getClientOriginalExtension();
+        $uploaded = $file->move($destination, $fileName);
 
-            //membuat nama file random berikut extension
-            $filename = md5(time()) . '.' . $extension;
-
-            // menyimpan cover ke folder public/img
-            $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img/cover';
-            $uploaded_cover->move($destinationPath, $filename);
-
-            // mengisi field cover di book dengan filename yang baru di buat
-            return $filename;   
-        }
+        return $fileName;
     }
 }

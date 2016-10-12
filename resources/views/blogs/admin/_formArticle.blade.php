@@ -18,6 +18,11 @@
   <div class="col-md-12">
 	{!! Form::label('post_image', 'Image', ['class'=>'']) !!}
     {!! Form::file('post_image') !!}
+    @if (isset($post) && $post->post_image)
+      <p>
+      {!! Html::image(asset('img/cover/'.$post->post_image), null, ['class'=>'thumbnail img-rounded']) !!}
+      </p>
+    @endif
     {!! $errors->first('post_image', '<p class="help-block">:message</p>') !!}
   </div>
 </div>
