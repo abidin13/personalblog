@@ -15,6 +15,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use App\TagsPosts;
 use App\Tags;
 use Carbon\Carbon;
+// use Symfony\Component\HttpFoundation\File\UploadedFile;
 use DB;
 
 
@@ -67,22 +68,30 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,['tags'=>'required','post_title'=>'required|max:50', 'post_content'=>'required']);
+        $this->validate($request,['tags'=>'required',
+                                    'post_title'=>'required|max:50', 
+                                    'post_content'=>'required', 
+                                    'post_image' => 'required'
+                                ]);
         $user = Auth::user();
         $postscontent = new Posts;
         $postscontent->post_author = $user->id;
         $postscontent->post_title = $request->post_title;
         $postscontent->post_content = $request->post_content;
+        $postscontent->post_image = $this->upload($request->file('post_image'));
+        $postscontent->created_at = Carbon::now('Asia/Jakarta');
+        $postscontent->updated_at = Carbon::now('Asia/Jakarta');
         $postscontent->save();
-        // $postscontent->postTagsid()->sync((array)$request->get('tags'));
+        $postscontent->Tagss()->sync((array)$request->get('tags'));
 
-        foreach ((array)$request->get('tags') as $result) {
-            $tagss = new TagsPosts;
-            $tagss->post_id = $postscontent->id;
-            $tagss->tags_id = $result;
-            $tagss->save();
-        }
-        return redirect()->route('blog.admin.articles.index');
+        // foreach ((array)$request->get('tags') as $result) {
+        //     $tagss = new TagsPosts;
+        //     $tagss->post_id = $postscontent->id;
+        //     $tagss->tags_id = $result;
+        //     $tagss->save();
+        // }
+        return $postscontent;
+        // return redirect()->route('blog.admin.articles.index');
     }
 
     /**
@@ -104,7 +113,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        $post = Posts::find($id);
+        $post = Posts::findOrFail($id);
         return view('blogs.admin.articlesEdit')->with(compact('post'));
     }
 
@@ -139,5 +148,26 @@ class ArticleController extends Controller
         $post = Posts::find($id);
         $post->delete();
         return redirect()->route('blog.admin.articles.index');
+    }
+
+    public function upload($postimage)
+    {
+        if ($postimage->hasFile('post_image')) {
+            // mengambil file yang diupload
+            $uploaded_cover = $this->postimage;
+
+            // mengambil extension file
+            $extension = $uploaded_cover->getClientOriginalExtension();
+
+            //membuat nama file random berikut extension
+            $filename = md5(time()) . '.' . $extension;
+
+            // menyimpan cover ke folder public/img
+            $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img/cover';
+            $uploaded_cover->move($destinationPath, $filename);
+
+            // mengisi field cover di book dengan filename yang baru di buat
+            return $filename;   
+        }
     }
 }

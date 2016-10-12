@@ -21,19 +21,22 @@ class PostsSeeder extends Seeder
             'post_author'=>$userid->id, 
             'post_title'=>'Sample Posting', 
             'post_content'=>'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex perferendis natus, animi nulla est nisi rem tempore quibusdam dicta iure quasi quas, eos veritatis debitis distinctio, aperiam dolorem nostrum cum?</p>',
-            'post_status'=>1
+            'post_status'=>1,
+            'post_image'=>'coverDefault.jpeg'
         ]);
         $post2 = Posts::create([
             'post_author'=>$userid->id, 
             'post_title'=>'Sample Posting 2', 
             'post_content'=>'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex perferendis natus, animi nulla est nisi rem tempore quibusdam dicta iure quasi quas, eos veritatis debitis distinctio, aperiam dolorem nostrum cum?</p>',
-            'post_status'=>1
+            'post_status'=>1,
+            'post_image'=>'coverDefault.jpeg'
         ]);
         $post3 = Posts::create([
             'post_author'=>$userid->id, 
             'post_title'=>'Sample Posting 3', 
             'post_content'=>'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex perferendis natus, animi nulla est nisi rem tempore quibusdam dicta iure quasi quas, eos veritatis debitis distinctio, aperiam dolorem nostrum cum?</p>',
-            'post_status'=>1
+            'post_status'=>1,
+            'post_image'=>'coverDefault.jpeg'
         ]);
     }
 }

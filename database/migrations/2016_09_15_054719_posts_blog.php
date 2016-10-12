@@ -18,7 +18,7 @@ class PostsBlog extends Migration
             $table->text('post_title');
             $table->longtext('post_content');
             $table->integer('post_status');
-            $table->text('post_image');
+            $table->string('post_image');
             $table->timestamps('created_at');
         });
     }
