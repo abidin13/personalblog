@@ -51,8 +51,8 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        $dtlPost = Posts::find($id);
-        return view('blogs.showPost', compact('dtlPost'));
+        $dtlpost = Posts::findOrFail($id);
+        return view('blogs.showPost', compact('dtlpost'));
     }
 
     /**

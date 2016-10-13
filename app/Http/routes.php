@@ -17,6 +17,9 @@ Route::group(['middleware' => 'web'], function() {
 	});
 	Route::get('/blog','BlogsController@index');
 	Route::get('/home', 'HomeController@index');
+	Route::group(['prefix' => 'blog'], function() {
+		Route::resource('shows','BlogsController');
+	});
 	Route::group(['prefix' => 'blog/admin'], function() {
 		// Route::auth();
 		Route::get('/', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@showLoginForm']);
