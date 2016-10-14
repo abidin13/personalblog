@@ -13,7 +13,8 @@
         "yajra/laravel-datatables-oracle": "~6.0",
         "barryvdh/laravel-debugbar": "^2.2",
         "summernote/summernote": "^0.8.2",
-        "drmonty/chosen": "^1.6"
+        "drmonty/chosen": "^1.6",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

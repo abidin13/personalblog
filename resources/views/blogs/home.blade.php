@@ -17,7 +17,8 @@
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
+                        <a href="{{ $post->nextPageUrl() }}">Older Posts &rarr;</a>
+                        <a href="{{ $post->previousPageUrl() }}">&larr; News't Posts </a>
                     </li>
                 </ul>
             </div>

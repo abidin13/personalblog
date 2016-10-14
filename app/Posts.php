@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Posts extends Model
 {
+    
     protected $fillable = ['post_author','post_title','post_content','post_status','post_image','updated_at'];
 
     public function users(){
@@ -25,7 +26,7 @@ class Posts extends Model
     	if ($this->tagss()->count() < 1 ) {
     		return null;
     	}
-    	return $this->tags->lists('id')->all();
+    	return $this->tags->lists('name')->all();
     	
     }
     

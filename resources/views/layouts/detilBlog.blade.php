@@ -59,33 +59,7 @@
         <!-- /.container -->
     </nav>
 
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url({!! '/img/cover/'.$dtlposts->post_image !!})">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
-                        <h1>@yield('title')</h1>
-                        <h2 class="subheading"></h2>
-                        <span class="meta">Posted by <a href="#">@yield('posted')</a> on @yield('datess')</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Post Content -->
-    <article>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    @yield('content')
-                </div>
-            </div>
-        </div>
-    </article>
-    <hr>
+   @yield('content')
 
     <footer>
         <div class="container">
@@ -124,5 +98,10 @@
     </footer>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("img").addClass("img-responsive");
+        });
+    </script>
 </body>
 </html>

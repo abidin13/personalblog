@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Posts;
+use App\Users;
 use App\Tags;
 use App\TagsPosts;
 use Carbon\Carbon;
+use DB;
 
 class BlogsController extends Controller
 {
@@ -18,7 +20,9 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $post = Posts::with('users')->get();
+        $post = Posts::with('users')
+                ->orderBy('updated_at','desc')
+                ->simplePaginate(5);
         return view('blogs.home')->with(compact('post'));
     }
 
@@ -51,8 +55,24 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        $dtlpost = Posts::findOrFail($id);
-        return view('blogs.showPost', compact('dtlpost'));
+        
+        $dtlpost = DB::table('posts')
+                        ->select('*')
+                        ->join('users', 'posts.post_author', '=', 'users.id')
+                        ->where('posts.id','=',$id)
+                        ->where('posts.post_status', '=','1')
+                        ->get();
+        $tagspost = DB::table('posts_tags')
+                    ->select ('*')
+                    ->join('tags','posts_tags.tags_id', '=','tags.id')
+                    ->where('posts_tags.post_id', '=',$id)
+                    ->whereNotIn('posts_tags.tags_id',[0])
+                    ->get();
+        
+        // $dtlpost = Posts::with('users')
+        //             ->findOrFail($id)
+        //             ->get();
+        return view('blogs.showPost', compact('dtlpost','tagspost'));
     }
 
     /**

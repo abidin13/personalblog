@@ -16,6 +16,7 @@ use App\TagsPosts;
 use App\Tags;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Intervention\Image\ImageManagerStatic as Image;
 use DB;
 
 
@@ -73,13 +74,40 @@ class ArticleController extends Controller
         $this->validate($request,['tags'=>'required',
                                     'post_title'=>'required|max:50', 
                                     'post_content'=>'required', 
-                                    'post_image' => 'mimes:jpg,png|max:2048'
+                                    'post_image' => 'required|mimes:jpg,jpeg,png,bmp'
                                 ]);
         $user = Auth::user();
+        $dom = new \DomDocument();
+        $contents = $request->post_content;
+        $dom->loadHtml($contents, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+        foreach ($images as $img) {
+            $src = $img->getAttribute('src');
+            // if img source is url
+            if (preg_match('/data:image/', $src)) {
+                // get the mime type
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimetype = $groups['mime'];
+
+                // generating random file
+                $filename = uniqid();
+                $filepath = "/img/cover/$filename" . '.' . "$mimetype";
+
+                // @see http://image.intervention.io/api/
+                $image = Image::make($src)
+                    // resize if required
+                    ->resize(300, null) 
+                    ->encode($mimetype, 100)
+                    ->save(public_path($filepath));
+                $new_src = asset($filepath);
+                $img->removeAttribute('src');
+                $img->setAttribute('src',$new_src);
+            } 
+        }
         $postscontent = new Posts;
         $postscontent->post_author = $user->id;
         $postscontent->post_title = $request->post_title;
-        $postscontent->post_content = $request->post_content;
+        $postscontent->post_content = $dom->saveHTML();
         $postscontent->post_image = $this->upload($request->file('post_image'));
         $postscontent->created_at = Carbon::now('Asia/Jakarta');
         $postscontent->updated_at = Carbon::now('Asia/Jakarta');
@@ -150,6 +178,8 @@ class ArticleController extends Controller
     {
         $post = Posts::find($id);
         $post->delete();
+        DB::table('posts_tags')->where('post_id', $id)->delete();
+       
         return redirect()->route('blog.admin.articles.index');
     }
 
