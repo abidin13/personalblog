@@ -28,12 +28,23 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <div class="col-md-1"><small>Tags:</small></div>
+                        <div class="col-md-1 " style="font-family:'Open Sans'"><small>Tags:</small></div>
                         <div class="col-md-9"> 
                             @foreach ($tagspost as $tagss)
-                                <span class="label label-info"><small>{!! $tagss->name !!}</small></span>
+                                <span class="label label-info" style="font-family:'Open Sans'"><small>{!! $tagss->name !!}</small></span>
                             @endforeach
                         </div>  
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="col-md-2">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                        <div class="col-md-2">
+                            <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&appId=207976409278397&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                        </div>
                     </div>
                 </div>
                 <hr>
