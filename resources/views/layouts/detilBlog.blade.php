@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    @yield('fbmeta')
     <title>Febriyant Blog's | @yield('title')</title>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -90,6 +91,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script id="dsq-count-scr" src="//febriyant-me.disqus.com/count.js" async></script>
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.8&appId=207976409278397";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+            (document, 'script', 'facebook-jssdk'));
+    </script>
     <script type="text/javascript">
         $(document).ready(function(){
             $("img").addClass("img-responsive");

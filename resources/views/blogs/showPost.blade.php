@@ -1,4 +1,13 @@
 @extends('layouts.detilBlog')
+@section('fbmeta')
+    @foreach ($dtlpost as $dtlposts)
+        <meta property="og:url"           content="{{ Request::fullUrl()}}" />
+        <meta property="og:type"          content= "Blog" />
+        <meta property="og:title"         content="{{ 'Febriyant Blogs'.$dtlposts->post_title }}" />
+        <meta property="og:description"   content="{{ $dtlposts->post_title }}" />
+        <meta property="og:image"         content="{{ asset('img/cover/'.$dtlposts->post_image) }}" />
+    @endforeach
+@stop
 @section('content')
     @foreach ($dtlpost as $dtlposts)
         @section('title')
@@ -39,11 +48,11 @@
                 <br>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <div class="col-md-2">
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <div class="col-md-5">
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a>
                         </div>
-                        <div class="col-md-2">
-                            <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&appId=207976409278397&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                        <div class="col-md-5">
+                        <iframe src="https://www.facebook.com/plugins/share_button.php?href={{Request::root().'%2F'.Request::segment(1).'%2F'.Request::segment(2).'%2F'.Request::segment(3)}}&layout=button&size=small&mobile_iframe=true&appId=207976409278397&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
                         </div>
                     </div>
                 </div>
@@ -73,6 +82,7 @@
                         </noscript>
                     </div>
                 </div>
+                                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </article>
     @endforeach
