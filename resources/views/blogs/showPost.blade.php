@@ -3,7 +3,7 @@
     @foreach ($dtlpost as $dtlposts)
         <meta property="og:url"           content="{{ Request::fullUrl()}}" />
         <meta property="og:type"          content= "Blog" />
-        <meta property="og:title"         content="{{ 'Febriyant Blogs'.$dtlposts->post_title }}" />
+        <meta property="og:title"         content="{{ 'Febriyant Blogs '.$dtlposts->post_title }}" />
         <meta property="og:description"   content="{{ $dtlposts->post_title }}" />
         <meta property="og:image"         content="{{ asset('img/cover/'.$dtlposts->post_image) }}" />
     @endforeach
