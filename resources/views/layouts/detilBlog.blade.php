@@ -42,7 +42,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="http://febriyant.me/blog">Home Blog</a>
+                        <a href="http://febriyant.me/blog">Blog</a>
                     </li>
                 </ul>
             </div>

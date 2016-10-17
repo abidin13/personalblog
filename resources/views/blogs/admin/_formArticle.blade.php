@@ -1,4 +1,5 @@
 <div class="form-group {{ $errors->has('name') ? ' has-error':'' }}">
+	{!! csrf_field() !!}
 	<div class="col-md-12">
 		{!! Form::label('post_title', 'Title', ['class'=>'']) !!}
 		{!! Form::text('post_title', null, ['class'=>'form-control','placeholder'=>'Title','id'=>'title']) !!}

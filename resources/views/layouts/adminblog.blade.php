@@ -17,6 +17,7 @@
             <link href="{{ asset('summernote/summernote.css') }}" rel='stylesheet' type='text/css'>
         </head>
         <body>
+            {!! csrf_field() !!}
             <div class="container-fluid display-table">
                 <div class="row display-table-row">
                     <!-- side-menu -->
