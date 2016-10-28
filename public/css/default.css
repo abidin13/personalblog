@@ -1,12 +1,13 @@
 @font-face{
-	font-family: lato;
-	src:url('/fonts/Lato-Regular.ttf');
-	/*/public/fonts/Lato-Black.ttf*/
+	font-family: opensansBo;
+	src:url('/fonts/OpenSans-ExtraBold.ttf');
 }
+
 @font-face{
-	font-family: lato-light;
-	src:url('/fonts/Lato-Light.ttf');
+	font-family: opensansLi;
+	src:url('/fonts/OpenSans-Light.ttf');
 }
+
 
 /*style navbar */
 .navbar-default{
@@ -18,14 +19,14 @@
     -o-transition: all 0.6s ease-out;
     -ms-transition: all 0.6s ease-out;
     transition: all 0.6s ease-out;
-    font-family: lato;	
+    font-family: opensansBo;	
 }
 #menu-right li{
 	/*width: 120px;*/
 }
 #list-menu a{
 	color: #607D8B;
-	font-size: 20px;
+	font-size: 16px;
 	/*font-weight: bold;*/
 }
 #list-menu a:hover{
@@ -51,7 +52,7 @@
 .intro_message{
 	padding-top: 200px;
 	padding-bottom: 500px;
-	font-family: lato;
+	font-family: opensansBo;
 	text-align: center;
 }
 
@@ -61,7 +62,7 @@
 	text-shadow: 1px 5px 10px black;
 }
 .intro_message h3{
-	font-family: lato-light;
+	font-family: opensansLi;
 	color: white;
 	text-shadow: 1px 5px 10px black
 }
@@ -72,7 +73,7 @@
 /*section-a about*/
 .section-a{	
 	background: rgba(55,71,79 ,1);
-	font-family: lato-light;
+	font-family: opensansLi;
 	color: white;
 	font-size: 18px;
 	width: 100%;
@@ -80,7 +81,7 @@
 }
 
 #about .title h1{
-	font-family: lato;
+	font-family: opensansBo;
 	font-size: 50px;
 	padding-bottom: 50px;
 }
@@ -95,14 +96,14 @@
 	background: white url("/img/education_02.png") no-repeat;
 	background-position: bottom;
 	background-size: 400px;
-	font-family: lato-light;
+	font-family: opensansLi;
 	font-size: 18px;
 	width: 100%;
 	padding: 150px 0;
 	color: #37474F;
 }
 #education .title{
-	font-family: lato;
+	font-family: opensansBo;
 	font-size: 50px;
 	padding-bottom: 50px;
 	margin-bottom: 0px;	
@@ -118,7 +119,7 @@
 }
 
 #education h4{
-	font-family: lato;
+	font-family: opensansBo;
 }
 
 
@@ -150,13 +151,13 @@
 	background: #F8F8F8 url("/img/sample-size-image_02.png") no-repeat;
 	background-position: right;
 	background-size: contain;
-	font-family: lato-light;
+	font-family: opensansLi;
 	font-size: 18px;
 	width: 100%;
 	padding: 150px 0;
 }
 #experience .title{
-	font-family: lato;
+	font-family: opensansBo;
 	font-size: 50px;
 	margin-bottom: 0px;
 	color: #37474F;	
@@ -164,11 +165,11 @@
 }
 
 #experience h4{
-	font-family: lato;
+	font-family: opensansBo;
 }
 
 #experience h3{
-	font-family: lato;
+	font-family: opensansBo;
 	text-align: center;
 }
 
@@ -191,7 +192,7 @@
 	background: url("/img/37e28531.jpg") no-repeat;
 	background-position: bottom;
 	background-size: cover;
-	font-family: lato;
+	font-family: opensansLi;
 	color: white;
 	font-size: 18px;
 	width: 100%;
@@ -199,7 +200,7 @@
 }
 
 #contact .title{
-	font-family: lato;
+	font-family: opensansBo;
 	font-size: 50px;
 }
 
@@ -230,18 +231,18 @@
 	background-image:url('http://badges.strava.com/logo-strava-echelon.png');
 }
 #contact .strava h3{
-	font-family: lato-light;
+	font-family: opensansLi;
 }
 .section-e{	
 	background: #F8F8F8;
-	font-family: lato-light;
+	font-family: opensansLi;
 	font-size: 18px;
 	width: 100%;
 	padding: 112px 0;
 }
 .footer{	
 	background: black;
-	font-family: lato;
+	font-family: opensansLi;
 	color: white;
 	font-size: 14px;
 	width: 100%;
@@ -249,6 +250,62 @@
 }
 
 @media(max-width: 400px){
+	.visible-section-c{	
+		background-image: none;
+	}
+	.visible-section-b{
+		background: white;
+		background-image: none;
+	}
+	.navbar-default {
+	    background: rgba(250,250,250 ,1);
+	}
+
+	#education .isi-satu{
+		text-align: center;
+		padding: 0;
+	}
+
+	#education .isi-dua{
+		text-align: center;
+		padding: 0;
+	}
+	#education .isi-tiga{
+		text-align: center;
+		padding: 0;
+	}
+
+	#education .isi-empat{
+		text-align: center;
+		padding: 0;
+	}
+	#contact .title{
+		color: #37474F;
+	}
+
+	.footer{
+		width: 100%;
+	}
+	/*#education .isi-satu{
+		text-align: center;
+		margin-right: -100px;
+	}
+
+	#education .isi-dua{
+		text-align: center;
+		margin-left: -100px;
+	}
+	#education .isi-tiga{
+		text-align: center;
+		margin-right: -100px;
+	}
+	#education .isi-empat{
+		text-align: center;
+		margin-left: -100px;
+	}*/
+}
+
+@media(max-width: 800px){
 	.visible-section-c{	
 		background-image: none;
 	}

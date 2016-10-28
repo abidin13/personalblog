@@ -22,6 +22,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand" href="#"><;/></a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -89,7 +90,7 @@
           <div class="row"> 
             <div class="col-xs-12 col-sm-12 col-md-6">
               <div class="isi-satu">
-                  <h4>Primary School<small> 1997 - 2003 </small><i class= hidden-xs "fa fa-dot-circle-o"></i></h4>
+                  <h4>Primary School<small> 1997 - 2003 </small><i class = "hidden-xs fa fa-dot-circle-o"></i></h4>
                   <p>
                     SD Tamansiswa <br>Bandarlampung, Indonesia.
                   </p>
