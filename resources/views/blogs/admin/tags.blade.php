@@ -13,3 +13,13 @@
 		</div>
 	</div>
 @stop
+<<<<<<< HEAD
+=======
+@section('scripts')
+	<script type="text/javascript">
+		function goBack() {
+    		window.history.back();
+		}
+	</script>
+@stop
+>>>>>>> master

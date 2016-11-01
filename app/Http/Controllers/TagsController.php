@@ -21,6 +21,7 @@ class TagsController extends Controller
     public function index(Request $request, Builder $htmlBuilder)
     {
         if ($request->ajax()) {
+<<<<<<< HEAD
              $tagss = Tags::select(['name','updated_at'])->orderBy('name','asc');
              return Datatables::of($tagss)->make(true);
                 // ->addColumn('action', function ($posts)
@@ -37,6 +38,24 @@ class TagsController extends Controller
             ->addColumn(['data' => 'name', 'name' => 'name', 'title' => 'Tags Name'])
             ->addColumn(['data' => 'updated_at','name' => 'updated_at', 'title' => 'Date']);
             // ->addColumn(['data'=>'action', 'name'=>'action','title'=>'','orderable'=>false, 'searchable' => false]);
+=======
+             $tagss = Tags::select(['id','name','updated_at'])->orderBy('name','asc');
+             return Datatables::of($tagss)
+                ->addColumn('action', function ($tagsss)
+                {
+                    return view('blogs.admin._actionTags',[
+                            'model'           => $tagsss,
+                            'form_url'        => route('blog.admin.tags.destroy', $tagsss->id),
+                            'edit_url'        => route('blog.admin.tags.edit', $tagsss->id),
+                            'confirm_message' => 'Yakin mau menghapus ' .$tagsss->name .'?'
+                        ]);
+                })->make(true);
+        }
+        $html = $htmlBuilder
+            ->addColumn(['data' => 'name', 'name' => 'name', 'title' => 'Tags Name'])
+            ->addColumn(['data' => 'updated_at','name' => 'updated_at', 'title' => 'Date'])
+            ->addColumn(['data'=>'action', 'name'=>'action','title'=>'','orderable'=>false, 'searchable' => false]);
+>>>>>>> master
 
         return view('blogs.admin.viewtags')->with(compact('html'));
     }
@@ -110,6 +129,10 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         //
+=======
+        
+>>>>>>> master
     }
 }

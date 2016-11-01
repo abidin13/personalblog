@@ -299,4 +299,17 @@ html, body {
 }
 
 
+/*rata kanan*/
+.kanan{
+	text-align: right;
+}
+/*end rata kanan*/
+
+/*rata kiri*/
+.kiri{
+	text-align: left;
+}
+/*end rata kiri*/
+
+
 
