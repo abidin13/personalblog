@@ -74,8 +74,8 @@
                                 <span class="hidden-xs hidden-sm">Commenters</span>
                                 </a>
                             </li>
-                            <li class="link">
-                                <a href="tags.html">
+                            <li class="link <?php if($url=="articles"): ?> active <?php endif; ?>">
+                                <a href="<?php echo e(route('blog.admin.tags.index')); ?>">
                                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                                     <span class="hidden-xs hidden-sm">Tags</span>
                                 </a>
