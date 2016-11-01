@@ -10,9 +10,12 @@
 
 	</div>
 </div>
-<div class="form-group">
-	<div class="col-md-12">
+<div class="form-group pull-right">
+	<div class="col-md-6">
     	<?php echo Form::submit('Simpan', ['class'=>'btn btn-primary']); ?>
 
+  	</div>
+  	<div class="col-md-6">
+  		<button type="button" onclick="goBack()" class="btn btn-default">Cancel</button>
   	</div>
 </div>

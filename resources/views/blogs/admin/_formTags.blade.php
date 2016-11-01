@@ -6,8 +6,11 @@
 		{!! $errors->first('post_title','<p class="help-block">:message</p>') !!}
 	</div>
 </div>
-<div class="form-group">
-	<div class="col-md-12">
+<div class="form-group pull-right">
+	<div class="col-md-6">
     	{!! Form::submit('Simpan', ['class'=>'btn btn-primary']) !!}
+  	</div>
+  	<div class="col-md-6">
+  		<button type="button" onclick="goBack()" class="btn btn-default">Cancel</button>
   	</div>
 </div>
