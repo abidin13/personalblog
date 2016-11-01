@@ -73,8 +73,8 @@
                                 <span class="hidden-xs hidden-sm">Commenters</span>
                                 </a>
                             </li>
-                            <li class="link">
-                                <a href="tags.html">
+                            <li class="link @if($url=="articles") active @endif">
+                                <a href="{{ route('blog.admin.tags.index')}}">
                                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                                     <span class="hidden-xs hidden-sm">Tags</span>
                                 </a>
