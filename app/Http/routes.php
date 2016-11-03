@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['middleware' => 'web'], function() {
+Route::group(['middlewareGroups' => 'web'], function() {
     Route::get('/', function () {
     	return view('personal');
 	});
@@ -38,7 +38,6 @@ Route::group(['middleware' => 'web'], function() {
 			Route::resource('dashboard','AdminController');
 			Route::resource('articles', 'ArticleController');
 			Route::resource('tags', 'TagsController');
-			// Route::post('articles', ['as' => 'blog.admin.articles.store', 'uses' => 'ArticleController@store']);
 		});
 	});
 });

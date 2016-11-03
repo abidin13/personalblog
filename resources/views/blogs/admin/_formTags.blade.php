@@ -3,15 +3,9 @@
 	<div class="col-md-12">
 		{!! Form::label('name', 'Name', ['class'=>'']) !!}
 		{!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Name Tags','id'=>'name']) !!}
-		{!! $errors->first('post_title','<p class="help-block">:message</p>') !!}
+		{!! $errors->first('name','<p class="help-block">:message</p>') !!}
 	</div>
 </div>
-<<<<<<< HEAD
-<div class="form-group">
-	<div class="col-md-12">
-    	{!! Form::submit('Simpan', ['class'=>'btn btn-primary']) !!}
-  	</div>
-=======
 <div class="form-group pull-right">
 	<div class="col-md-6">
     	{!! Form::submit('Simpan', ['class'=>'btn btn-primary']) !!}
@@ -19,5 +13,4 @@
   	<div class="col-md-6">
   		<button type="button" onclick="goBack()" class="btn btn-default">Cancel</button>
   	</div>
->>>>>>> master
 </div>

@@ -312,4 +312,8 @@ html, body {
 /*end rata kiri*/
 
 
-
+#flash-message{
+	margin: 20px 0px 2px 0px;
+	/*background-color: #fff;
+	border-top: solid 4px #e7eaec;*/
+}

@@ -14,8 +14,7 @@
 		</div>
 	</div>
 <?php $__env->stopSection(); ?>
-<<<<<<< HEAD
-=======
+
 <?php $__env->startSection('scripts'); ?>
 	<script type="text/javascript">
 		function goBack() {
@@ -23,6 +22,6 @@
 		}
 	</script>
 <?php $__env->stopSection(); ?>
->>>>>>> master
+
 
 <?php echo $__env->make('layouts.adminblog', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

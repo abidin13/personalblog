@@ -73,7 +73,7 @@
                                 <span class="hidden-xs hidden-sm">Commenters</span>
                                 </a>
                             </li>
-                            <li class="link @if($url=="articles") active @endif">
+                            <li class="link @if($url=="tags") active @endif">
                                 <a href="{{ route('blog.admin.tags.index')}}">
                                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                                     <span class="hidden-xs hidden-sm">Tags</span>
@@ -130,6 +130,13 @@
                     </div>
                     </header>
                     <!-- header end here -->
+                    <div id="flash-message">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @include('layouts._flash')
+                            </div>
+                        </div>
+                    </div>
                     </div>
                             <div id="content">
                                 @yield('content')

@@ -9,6 +9,7 @@ use App\Tags;
 use Carbon\Carbon;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
+use Session;
 
 
 class TagsController extends Controller
@@ -21,24 +22,6 @@ class TagsController extends Controller
     public function index(Request $request, Builder $htmlBuilder)
     {
         if ($request->ajax()) {
-<<<<<<< HEAD
-             $tagss = Tags::select(['name','updated_at'])->orderBy('name','asc');
-             return Datatables::of($tagss)->make(true);
-                // ->addColumn('action', function ($posts)
-                // {
-                //     return view('blogs.admin._actionArticle',[
-                //             'model'           => $posts,
-                //             'form_url'        => route('blog.admin.articles.destroy', $posts->id),
-                //             'edit_url'        => route('blog.admin.articles.edit', $posts->id),
-                //             'confirm_message' => 'Yakin mau menghapus ' .$posts->post_title .'?'
-                //         ]);
-                // })->make(true);
-        }
-        $html = $htmlBuilder
-            ->addColumn(['data' => 'name', 'name' => 'name', 'title' => 'Tags Name'])
-            ->addColumn(['data' => 'updated_at','name' => 'updated_at', 'title' => 'Date']);
-            // ->addColumn(['data'=>'action', 'name'=>'action','title'=>'','orderable'=>false, 'searchable' => false]);
-=======
              $tagss = Tags::select(['id','name','updated_at'])->orderBy('name','asc');
              return Datatables::of($tagss)
                 ->addColumn('action', function ($tagsss)
@@ -55,7 +38,6 @@ class TagsController extends Controller
             ->addColumn(['data' => 'name', 'name' => 'name', 'title' => 'Tags Name'])
             ->addColumn(['data' => 'updated_at','name' => 'updated_at', 'title' => 'Date'])
             ->addColumn(['data'=>'action', 'name'=>'action','title'=>'','orderable'=>false, 'searchable' => false]);
->>>>>>> master
 
         return view('blogs.admin.viewtags')->with(compact('html'));
     }
@@ -80,10 +62,10 @@ class TagsController extends Controller
     {
         $this->validate($request,['name'=>'required|unique:tags']);
         $tagss = Tags::create($request->only('name'));
-        // $request->session()->flash("flash_notification", [
-        //                             "level"=>"success",
-        //                             "message"=>"Berhasil Menyimpan $author->name"
-        //                             ]);       
+        $request->session()->flash("flash_notification", [
+                                    "level"=>"success",
+                                    "message"=>"Success $tagss->name"
+                                    ]);
         return redirect()->route('blog.admin.tags.index');
     }
 
@@ -129,10 +111,6 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
-<<<<<<< HEAD
-        //
-=======
-        
->>>>>>> master
+
     }
 }

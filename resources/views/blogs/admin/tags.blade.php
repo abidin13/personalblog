@@ -13,8 +13,7 @@
 		</div>
 	</div>
 @stop
-<<<<<<< HEAD
-=======
+
 @section('scripts')
 	<script type="text/javascript">
 		function goBack() {
@@ -22,4 +21,4 @@
 		}
 	</script>
 @stop
->>>>>>> master
+
