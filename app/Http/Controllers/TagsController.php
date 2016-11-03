@@ -9,6 +9,7 @@ use App\Tags;
 use Carbon\Carbon;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
+use Session;
 
 
 class TagsController extends Controller
@@ -61,10 +62,10 @@ class TagsController extends Controller
     {
         $this->validate($request,['name'=>'required|unique:tags']);
         $tagss = Tags::create($request->only('name'));
-        // $request->session()->flash("flash_notification", [
-        //                             "level"=>"success",
-        //                             "message"=>"Berhasil Menyimpan $author->name"
-        //                             ]);       
+        $request->session()->flash("flash_notification", [
+                                    "level"=>"success",
+                                    "message"=>"Success $tagss->name"
+                                    ]);
         return redirect()->route('blog.admin.tags.index');
     }
 
@@ -110,6 +111,6 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
-        
+
     }
 }

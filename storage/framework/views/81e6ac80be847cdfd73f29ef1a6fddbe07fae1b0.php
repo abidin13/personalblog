@@ -6,7 +6,7 @@
 
 		<?php echo Form::text('name', null, ['class'=>'form-control','placeholder'=>'Name Tags','id'=>'name']); ?>
 
-		<?php echo $errors->first('post_title','<p class="help-block">:message</p>'); ?>
+		<?php echo $errors->first('name','<p class="help-block">:message</p>'); ?>
 
 	</div>
 </div>

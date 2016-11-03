@@ -74,7 +74,7 @@
                                 <span class="hidden-xs hidden-sm">Commenters</span>
                                 </a>
                             </li>
-                            <li class="link <?php if($url=="articles"): ?> active <?php endif; ?>">
+                            <li class="link <?php if($url=="tags"): ?> active <?php endif; ?>">
                                 <a href="<?php echo e(route('blog.admin.tags.index')); ?>">
                                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                                     <span class="hidden-xs hidden-sm">Tags</span>
@@ -131,6 +131,13 @@
                     </div>
                     </header>
                     <!-- header end here -->
+                    <div id="flash-message">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php echo $__env->make('layouts._flash', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                             <div id="content">
                                 <?php echo $__env->yieldContent('content'); ?>

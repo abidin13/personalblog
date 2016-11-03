@@ -113,6 +113,11 @@ class ArticleController extends Controller
         $postscontent->updated_at = Carbon::now('Asia/Jakarta');
         $postscontent->save();
         $postscontent->Tagss()->sync((array)$request->get('tags'));
+
+        $request->session()->flash("flash_notification", [
+                                    "level"=>"success",
+                                    "message"=>"Success $postscontent->post_title"
+                                    ]);
         
         return redirect()->route('blog.admin.articles.index');
 
