@@ -49,9 +49,29 @@
 
 	</div>
 </div>
-<div class="form-group">
+
+<div class="form-group <?php echo e($errors->has('content') ? ' has-error':''); ?>">
 	<div class="col-md-12">
+	<?php if(isset($post) && $post->post_status == 0): ?>
+		<?php echo Form::checkbox('post_status', '0', true); ?>
+
+	<?php else: ?>
+		<?php echo Form::checkbox('post_status', '0', false); ?>
+
+	<?php endif; ?>
+		<?php echo Form::label('post_status', 'Save As Draft ', ['class'=>'']); ?>
+
+		<?php echo $errors->first('post_status','<p class="help-block">:message</p>'); ?>
+
+	</div>	
+</div>
+
+<div class="form-group pull-right">
+	<div class="col-md-6">
     	<?php echo Form::submit('Simpan', ['class'=>'btn btn-primary']); ?>
 
+  	</div>
+  	<div class="col-md-6">
+  		<button type="button" onclick="goBack()" class="btn btn-default">Cancel</button>
   	</div>
 </div>

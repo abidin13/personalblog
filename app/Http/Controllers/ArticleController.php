@@ -42,13 +42,25 @@ class ArticleController extends Controller
                             'edit_url'        => route('blog.admin.articles.edit', $posts->id),
                             'confirm_message' => 'Yakin mau menghapus ' .$posts->post_title .'?'
                         ]);
+                })
+
+                ->addColumn('status', function ($posts)
+                { 
+                    if ($posts->post_status == 1) {
+                        $statuss = 'Publish';
+                    }
+                    else{
+                        $statuss = 'Draft';
+                    }
+                    return $statuss;
                 })->make(true);
         }
         $html = $htmlBuilder
             ->addColumn(['data' => 'post_title', 'name' => 'post_title', 'title' => 'Article Title'])
             ->addColumn(['data' => 'users.name', 'name' => 'users.name', 'title' => 'Post Author'])
             ->addColumn(['data' => 'updated_at', 'name' => 'updated_at', 'title' => 'Date'])
-            ->addColumn(['data'=>'action', 'name'=>'action','title'=>'','orderable'=>false, 'searchable' => false]);
+            ->addColumn(['data'=>'status', 'name'=>'status','title'=>'Status','orderable'=>false, 'searchable' => false])
+            ->addColumn(['data'=>'action', 'name'=>'action','title'=>'Action','orderable'=>false, 'searchable' => false]);
 
         return view('blogs.admin.viewarticles')->with(compact('html'));
     }
@@ -74,9 +86,21 @@ class ArticleController extends Controller
         $this->validate($request,['tags'=>'required',
                                     'post_title'=>'required|max:50', 
                                     'post_content'=>'required', 
-                                    'post_image' => 'required|mimes:jpg,jpeg,png,bmp'
+                                    'post_image' => 'required|mimes:jpg,jpeg,png,bmp',
+                                    'post_status'=>''
                                 ]);
         $user = Auth::user();
+
+        // Cek status draft
+        $valuestatus = $request->post_status;
+        $poststatus = '';
+        if (!isset($valuestatus)) {
+            $poststatus = 1;
+        } else{
+            $poststatus = 0;
+        }
+        // end status draft
+       
         $dom = new \DomDocument();
         $contents = $request->post_content;
         $dom->loadHtml($contents, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -108,6 +132,7 @@ class ArticleController extends Controller
         $postscontent->post_author = $user->id;
         $postscontent->post_title = $request->post_title;
         $postscontent->post_content = $dom->saveHTML();
+        $postscontent->post_status = $poststatus;
         $postscontent->post_image = $this->upload($request->file('post_image'));
         $postscontent->created_at = Carbon::now('Asia/Jakarta');
         $postscontent->updated_at = Carbon::now('Asia/Jakarta');
@@ -163,13 +188,32 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $post = Posts::findOrFail($id);
-        $this->validate($request,['post_title'=>'required|max:50', 'post_content'=>'required']);
+        $this->validate($request,['post_title'=>'required|max:50', 
+                                    'post_content'=>'required',
+                                    'post_status'=>''
+                                ]);
+
+        // Cek status draft
+        $valuestatus = $request->post_status;
+        $poststatus = '';
+        if (!isset($valuestatus)) {
+            $poststatus = 1;
+        } else{
+            $poststatus = 0;
+        }
+        // end status draft
+       
         $user = Auth::user();
         $post->post_author = $user->id;
         $post->post_title = $request->post_title;
         $post->post_content = $request->post_content;
+        $post->post_status = $poststatus;
         $post->updated_at = Carbon::now('Asia/Jakarta');
         $post->save();
+        $request->session()->flash("flash_notification", [
+                                    "level"=>"success",
+                                    "message"=>"Success Update $post->post_title"
+                                    ]);
         return redirect()->route('blog.admin.articles.index');
     }
 

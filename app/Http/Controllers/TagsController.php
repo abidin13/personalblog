@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use Session;
+use Disqus;
 
 
 class TagsController extends Controller

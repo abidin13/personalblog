@@ -22,6 +22,7 @@ class BlogsController extends Controller
     {
         $post = Posts::with('users')
                 ->orderBy('updated_at','desc')
+                ->where('post_status',1)
                 ->simplePaginate(5);
         return view('blogs.home')->with(compact('post'));
     }

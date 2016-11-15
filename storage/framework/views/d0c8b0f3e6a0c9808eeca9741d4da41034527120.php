@@ -160,6 +160,11 @@
             <script src="<?php echo e(asset('chosen/js/chosen.jquery.min.js')); ?>"></script>
             <script src="<?php echo e(asset('summernote/summernote.min.js')); ?>"></script>
             <script src="<?php echo e(asset('js/admin.js')); ?>"></script>
+            <script type="text/javascript">
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
             <?php echo $__env->yieldContent('scripts'); ?>
         </body>
     </html>

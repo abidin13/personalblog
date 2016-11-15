@@ -159,6 +159,11 @@
             <script src="{{ asset('chosen/js/chosen.jquery.min.js') }}"></script>
             <script src="{{ asset('summernote/summernote.min.js') }}"></script>
             <script src="{{ asset('js/admin.js') }}"></script>
+            <script type="text/javascript">
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
             @yield('scripts')
         </body>
     </html>

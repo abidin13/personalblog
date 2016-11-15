@@ -37,8 +37,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <div class="col-md-1 " style="font-family:'Open Sans'"><small>Tags:</small></div>
-                        <div class="col-md-9"> 
+                        <div class="col-md-2 " style="font-family:'Open Sans'"><small><i class="fa fa-tags"></i> Tags</small></div>
+                        <div class="col-md-8"> 
                             @foreach ($tagspost as $tagss)
                                 <span class="label label-info" style="font-family:'Open Sans'"><small>{!! $tagss->name !!}</small></span>
                             @endforeach

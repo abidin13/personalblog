@@ -35,8 +35,24 @@
 	    {!! $errors->first('post_content','<p class="help-block">:message</p>') !!}
 	</div>
 </div>
-<div class="form-group">
+
+<div class="form-group {{ $errors->has('content') ? ' has-error':'' }}">
 	<div class="col-md-12">
+	@if (isset($post) && $post->post_status == 0)
+		{!! Form::checkbox('post_status', '0', true) !!}
+	@else
+		{!! Form::checkbox('post_status', '0', false) !!}
+	@endif
+		{!! Form::label('post_status', 'Save As Draft ', ['class'=>'']) !!}
+		{!! $errors->first('post_status','<p class="help-block">:message</p>') !!}
+	</div>	
+</div>
+
+<div class="form-group pull-right">
+	<div class="col-md-6">
     	{!! Form::submit('Simpan', ['class'=>'btn btn-primary']) !!}
+  	</div>
+  	<div class="col-md-6">
+  		<button type="button" onclick="goBack()" class="btn btn-default">Cancel</button>
   	</div>
 </div>

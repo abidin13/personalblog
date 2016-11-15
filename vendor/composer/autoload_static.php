@@ -20,6 +20,7 @@ class ComposerStaticInit0b9abbe85ce368593c2b3d1b278e7a0d
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
+        'e7eb78be4f0feafe6307abed344bf048' => __DIR__ . '/..' . '/roumen/disqus/src/Roumen/Disqus/disqusapi/disqusapi.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -299,6 +300,13 @@ class ComposerStaticInit0b9abbe85ce368593c2b3d1b278e7a0d
                 0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src',
             ),
         ),
+        'R' => 
+        array (
+            'Roumen\\Disqus' => 
+            array (
+                0 => __DIR__ . '/..' . '/roumen/disqus/src',
+            ),
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 
@@ -382,6 +390,7 @@ class ComposerStaticInit0b9abbe85ce368593c2b3d1b278e7a0d
         'App\\Http\\Controllers\\BlogsController' => __DIR__ . '/../..' . '/app/Http/Controllers/BlogsController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\TagsController' => __DIR__ . '/../..' . '/app/Http/Controllers/TagsController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -3176,6 +3185,7 @@ class ComposerStaticInit0b9abbe85ce368593c2b3d1b278e7a0d
         'Psy\\VarDumper\\Dumper' => __DIR__ . '/..' . '/psy/psysh/src/Psy/VarDumper/Dumper.php',
         'Psy\\VarDumper\\Presenter' => __DIR__ . '/..' . '/psy/psysh/src/Psy/VarDumper/Presenter.php',
         'Psy\\VarDumper\\PresenterAware' => __DIR__ . '/..' . '/psy/psysh/src/Psy/VarDumper/PresenterAware.php',
+        'Roumen\\Disqus\\DisqusServiceProvider' => __DIR__ . '/..' . '/roumen/disqus/src/Roumen/Disqus/DisqusServiceProvider.php',
         'SebastianBergmann\\Comparator\\ArrayComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ArrayComparator.php',
         'SebastianBergmann\\Comparator\\Comparator' => __DIR__ . '/..' . '/sebastian/comparator/src/Comparator.php',
         'SebastianBergmann\\Comparator\\ComparisonFailure' => __DIR__ . '/..' . '/sebastian/comparator/src/ComparisonFailure.php',
