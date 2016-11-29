@@ -50,6 +50,18 @@
 	</div>
 </div>
 
+<div class="form-group <?php echo e($errors->has('name') ? ' has-error':''); ?>">
+	<div class="col-md-12">
+		<?php echo Form::label('updated_at', 'Auto Publish', ['class'=>'']); ?>
+
+		<?php echo Form::date('updated_at', null, ['class'=>'form-control','placeholder'=>'Date','id'=>'title']); ?>
+
+		<?php echo $errors->first('updated_at','<p class="help-block">:message</p>'); ?>
+
+	</div>
+</div>
+
+
 <div class="form-group <?php echo e($errors->has('content') ? ' has-error':''); ?>">
 	<div class="col-md-12">
 	<?php if(isset($post) && $post->post_status == 0): ?>

@@ -87,7 +87,8 @@ class ArticleController extends Controller
                                     'post_title'=>'required|max:50', 
                                     'post_content'=>'required', 
                                     'post_image' => 'required|mimes:jpg,jpeg,png,bmp',
-                                    'post_status'=>''
+                                    'post_status'=>'',
+                                    'updated_at' => ''
                                 ]);
         $user = Auth::user();
 
@@ -100,6 +101,16 @@ class ArticleController extends Controller
             $poststatus = 0;
         }
         // end status draft
+        
+        // auto publish
+        $autopublish = $request->updated_at;
+        if ($autopublish == '') {
+            $autopublish = Carbon::now('Asia/Jakarta');
+        } else {
+            $autopublish = $request->updated_at;
+        }
+        // end auto publish
+
        
         $dom = new \DomDocument();
         $contents = $request->post_content;
@@ -135,7 +146,7 @@ class ArticleController extends Controller
         $postscontent->post_status = $poststatus;
         $postscontent->post_image = $this->upload($request->file('post_image'));
         $postscontent->created_at = Carbon::now('Asia/Jakarta');
-        $postscontent->updated_at = Carbon::now('Asia/Jakarta');
+        $postscontent->updated_at = $autopublish;
         $postscontent->save();
         $postscontent->Tagss()->sync((array)$request->get('tags'));
 
@@ -202,13 +213,22 @@ class ArticleController extends Controller
             $poststatus = 0;
         }
         // end status draft
+        // auto publish
+        $autopublish = $request->updated_at;
+        if ($autopublish == '') {
+            $autopublish = Carbon::now('Asia/Jakarta');
+        } else {
+            $autopublish = $request->updated_at;
+        }
+        // end auto publish
+
        
         $user = Auth::user();
         $post->post_author = $user->id;
         $post->post_title = $request->post_title;
         $post->post_content = $request->post_content;
         $post->post_status = $poststatus;
-        $post->updated_at = Carbon::now('Asia/Jakarta');
+        $post->updated_at = $autopublish;
         $post->save();
         $request->session()->flash("flash_notification", [
                                     "level"=>"success",

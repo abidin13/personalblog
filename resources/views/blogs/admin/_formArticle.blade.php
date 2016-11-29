@@ -36,6 +36,15 @@
 	</div>
 </div>
 
+<div class="form-group {{ $errors->has('name') ? ' has-error':'' }}">
+	<div class="col-md-12">
+		{!! Form::label('updated_at', 'Auto Publish', ['class'=>'']) !!}
+		{!! Form::date('updated_at', null, ['class'=>'form-control','placeholder'=>'Date','id'=>'title']) !!}
+		{!! $errors->first('updated_at','<p class="help-block">:message</p>') !!}
+	</div>
+</div>
+
+
 <div class="form-group {{ $errors->has('content') ? ' has-error':'' }}">
 	<div class="col-md-12">
 	@if (isset($post) && $post->post_status == 0)
