@@ -15,6 +15,7 @@
             <link href="{{ asset('css/dataTables.bootstrap.css') }}" rel='stylesheet' type='text/css'>
             <link href="{{ asset('chosen/css/chosen.min.css') }}" rel='stylesheet' type='text/css'>
             <link href="{{ asset('summernote/summernote.css') }}" rel='stylesheet' type='text/css'>
+            <link href="{{ asset('datepicker/datepicker.min.css') }}" rel='stylesheet' type='text/css'>
         </head>
         <body>
             {!! csrf_field() !!}
@@ -159,10 +160,14 @@
             <script src="{{ asset('chosen/js/chosen.jquery.min.js') }}"></script>
             <script src="{{ asset('summernote/summernote.min.js') }}"></script>
             <script src="{{ asset('js/admin.js') }}"></script>
+            <script src="{{ asset('datepicker/datepicker.min.js') }}"></script>
             <script type="text/javascript">
                 function goBack() {
                     window.history.back();
                 }
+            </script>
+            <script type="text/javascript">
+                $('[data-toggle="datepicker"]').datepicker();
             </script>
             @yield('scripts')
         </body>

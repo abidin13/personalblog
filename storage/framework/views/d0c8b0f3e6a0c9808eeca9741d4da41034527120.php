@@ -15,6 +15,7 @@
             <link href="<?php echo e(asset('css/dataTables.bootstrap.css')); ?>" rel='stylesheet' type='text/css'>
             <link href="<?php echo e(asset('chosen/css/chosen.min.css')); ?>" rel='stylesheet' type='text/css'>
             <link href="<?php echo e(asset('summernote/summernote.css')); ?>" rel='stylesheet' type='text/css'>
+            <link href="<?php echo e(asset('datepicker/datepicker.min.css')); ?>" rel='stylesheet' type='text/css'>
         </head>
         <body>
             <?php echo csrf_field(); ?>
@@ -160,10 +161,14 @@
             <script src="<?php echo e(asset('chosen/js/chosen.jquery.min.js')); ?>"></script>
             <script src="<?php echo e(asset('summernote/summernote.min.js')); ?>"></script>
             <script src="<?php echo e(asset('js/admin.js')); ?>"></script>
+            <script src="<?php echo e(asset('datepicker/datepicker.min.js')); ?>"></script>
             <script type="text/javascript">
                 function goBack() {
                     window.history.back();
                 }
+            </script>
+            <script type="text/javascript">
+                $('[data-toggle="datepicker"]').datepicker();
             </script>
             <?php echo $__env->yieldContent('scripts'); ?>
         </body>

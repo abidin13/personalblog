@@ -54,7 +54,7 @@
 	<div class="col-md-12">
 		<?php echo Form::label('updated_at', 'Auto Publish', ['class'=>'']); ?>
 
-		<?php echo Form::date('updated_at', null, ['class'=>'form-control','placeholder'=>'Date','id'=>'title']); ?>
+		<?php echo Form::text('updated_at',null, ['class'=>'form-control', 'data-toggle'=>'datepicker' ,'placeholder'=>'Format mm/dd/yyyy','id'=>'date']); ?>
 
 		<?php echo $errors->first('updated_at','<p class="help-block">:message</p>'); ?>
 
