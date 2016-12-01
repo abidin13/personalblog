@@ -9,7 +9,7 @@
 <div class="form-group {{ $errors->has('tags') ? ' has-error':'' }}">
 	<div class="col-md-12">
 		{!! Form::label('tags', 'Tags', ['class'=>'']) !!}
-		{!! Form::select('tags[]', [''=>'']+App\Tags::lists('name','id')->all(), null, [ 'class'=>'form-control chosen-select', 'multiple']) !!}
+		{!! Form::select('tags[]', App\Tags::lists('name','id')->all(), null, [ 'class'=>'form-control chosen-select', 'multiple']) !!}
 		{{-- {!! Form::select('tags', ['1' => 'Programing', '2' => 'HTML', '3' => 'Css', '4' => 'Javascript'], null, ['class' => 'form-control chosen-select', 'placeholder' => '', 'multiple' => true]) !!} --}}
 		{!! $errors->first('tags','<p class="help-block">:message</p>') !!}
 	</div>
@@ -46,7 +46,7 @@
 
 
 <div class="form-group {{ $errors->has('content') ? ' has-error':'' }}">
-	<div class="col-md-12">
+	<div class="col-md-6">
 	@if (isset($post) && $post->post_status == 0)
 		{!! Form::checkbox('post_status', '0', true) !!}
 	@else
@@ -54,6 +54,11 @@
 	@endif
 		{!! Form::label('post_status', 'Save As Draft ', ['class'=>'']) !!}
 		{!! $errors->first('post_status','<p class="help-block">:message</p>') !!}
+	</div>
+	<div class="col-md-6">
+		{!! Form::checkbox('auto_share', '0', false) !!}
+		{!! Form::label('auto_share', 'Auto Share On Facebook ', ['class'=>'']) !!}
+		{!! $errors->first('auto_share','<p class="help-block">:message</p>') !!}
 	</div>	
 </div>
 
