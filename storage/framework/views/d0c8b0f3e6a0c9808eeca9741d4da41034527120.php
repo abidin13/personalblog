@@ -168,7 +168,9 @@
                 }
             </script>
             <script type="text/javascript">
-                $('[data-toggle="datepicker"]').datepicker();
+                $('[data-toggle="datepicker"]').datepicker({
+                     format: 'yyyy-mm-dd'   
+                });
             </script>
             <?php echo $__env->yieldContent('scripts'); ?>
         </body>
