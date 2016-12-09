@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
 	<header class="clearfix">
 		<h2 class="page_title pull-left">View Article</h2>
-		<a href="<?php echo e(route('blog.admin.articles.create')); ?>" class="btn btn-xs btn-primary pull-right">New Article</a>
+		<a href="<?php echo e(route('blog.admin.articles.create')); ?>" class="btn btn-xs btn-primary pull-right"><i class="fa fa-plus"></i> New Article</a>
 	</header>
 	<div class="content-inner">
 		<div class="row">

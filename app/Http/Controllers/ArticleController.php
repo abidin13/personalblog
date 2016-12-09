@@ -185,17 +185,17 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        $tagsid = DB::table('posts_tags')
-                    ->select('tags_id')
-                    ->where('post_id',$id)
-                    ->get();
+        // $tagsid = DB::table('posts_tags')
+        //             ->select('tags_id')
+        //             ->where('post_id',$id)
+        //             ->get();
         
         
-        $tagssid = DB::table('tags')
-                    ->select('id','name')
-                    ->whereIn('id',$iddd)
-                    ->get();
-        return $tagssid;
+        // $tagssid = DB::table('tags')
+        //             ->select('id','name')
+        //             ->whereIn('id',$id)
+        //             ->get();
+        // return $tagssid;
 
 
         // $post = DB::table('posts')
