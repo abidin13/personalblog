@@ -1,6 +1,7 @@
-<div class="row">
-	<div class="col-md-8">
-		<div class="form-group {{ $errors->has('name') ? ' has-error':'' }}">
+<div class="col-md-8">
+	<div class="row">
+		<div class="col-md-12">
+				<div class="form-group {{ $errors->has('name') ? ' has-error':'' }}">
 			{!! csrf_field() !!}
 			<div class="col-md-12">
 				{!! Form::label('post_title', 'Title', ['class'=>'']) !!}
@@ -37,10 +38,21 @@
 			    {!! $errors->first('post_content','<p class="help-block">:message</p>') !!}
 			</div>
 		</div>
+		</div>
 	</div>
-
-	<div class="col-md-4">
-		<div class="form-group {{ $errors->has('name') ? ' has-error':'' }}">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group pull-right">
+				<div class="col-md-12">
+			    	{!! Form::submit('Simpan', ['class'=>'btn btn-primary']) !!}
+			    	<button type="button" onclick="goBack()" class="btn btn-default">Cancel</button>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-4">
+	<div class="form-group {{ $errors->has('name') ? ' has-error':'' }}">
 			<div class="col-md-12">
 				{!! Form::label('updated_at', 'Auto Publish', ['class'=>'']) !!}
 				{!! Form::text('updated_at',null, ['class'=>'form-control', 'data-toggle'=>'datepicker' ,'placeholder'=>'Format mm/dd/yyyy','id'=>'date']) !!}
@@ -72,16 +84,14 @@
 					</div>
 				</div>	
 			</div>
+</div>
+<div class="row">
+	<div class="col-md-8">
+	
+	</div>
+
+	<div class="col-md-4">
+		
 		</div>
 	</div>
 
-<div class="row">
-	<div class="col-md-8">
-		<div class="form-group pull-right">
-			<div class="col-md-12">
-		    	{!! Form::submit('Simpan', ['class'=>'btn btn-primary']) !!}
-		    	<button type="button" onclick="goBack()" class="btn btn-default">Cancel</button>
-		  	</div>
-		</div>
-	</div>
-</div>
