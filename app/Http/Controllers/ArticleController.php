@@ -38,8 +38,8 @@ class ArticleController extends Controller
                 {
                     return view('blogs.admin._actionArticle',[
                             'model'           => $posts,
-                            'form_url'        => route('blog.admin.articles.destroy', $posts->id),
-                            'edit_url'        => route('blog.admin.articles.edit', $posts->id),
+                            'form_url'        => route('admin.articles.destroy', $posts->id),
+                            'edit_url'        => route('admin.articles.edit', $posts->id),
                             'confirm_message' => 'Yakin mau menghapus ' .$posts->post_title .'?'
                         ]);
                 })
@@ -155,7 +155,7 @@ class ArticleController extends Controller
                                     "message"=>"Success $postscontent->post_title"
                                     ]);
         
-        return redirect()->route('blog.admin.articles.index');
+        return redirect()->route('admin.articles.index');
 
         
         // foreach ((array)$request->get('tags') as $result) {
@@ -254,7 +254,7 @@ class ArticleController extends Controller
                                     "level"=>"success",
                                     "message"=>"Success Update $post->post_title"
                                     ]);
-        return redirect()->route('blog.admin.articles.index');
+        return redirect()->route('admin.articles.index');
     }
 
     /**
@@ -269,7 +269,7 @@ class ArticleController extends Controller
         $post->delete();
         DB::table('posts_tags')->where('post_id', $id)->delete();
        
-        return redirect()->route('blog.admin.articles.index');
+        return redirect()->route('admin.articles.index');
     }
 
     public function upload(UploadedFile $file)

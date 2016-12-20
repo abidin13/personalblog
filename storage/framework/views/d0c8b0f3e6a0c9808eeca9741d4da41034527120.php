@@ -27,11 +27,11 @@
                         <h1 class="hidden-sm hidden-xs">Navigation</h1>
                         <ul>
                             <?php 
-                                $url = Request::segment(3);
-                                $url2 = Request::segment(4);
+                                $url = Request::segment(2);
+                                $url2 = Request::segment(3);
                             ?>
                             <li class="link <?php if($url=="dashboard"): ?> active <?php endif; ?>">
-                                <a href="<?php echo e(route('blog.admin.dashboard.index')); ?>">
+                                <a href="<?php echo e(route('admin.dashboard.index')); ?>">
                                     <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
                                     <span class="hidden-xs hidden-sm">Dashboard</span>
                                 </a>
@@ -43,9 +43,9 @@
                                     <span class="label label-success pull-right hidden-xs hidden-sm">20</span>
                                 </a>
                                 <ul class="collapse collapseable <?php if($url2=="create" || $url=="articles" ): ?> in <?php endif; ?>" id="collapse-post">
-                                    <li><a href="<?php echo e(route('blog.admin.articles.create')); ?>" style="<?php if($url2=="create"): ?> color: #fff;
+                                    <li><a href="<?php echo e(route('admin.articles.create')); ?>" style="<?php if($url2=="create"): ?> color: #fff;
                                     <?php endif; ?>">Create New</a></li>
-                                    <li><a href="<?php echo e(route('blog.admin.articles.index')); ?>" style="<?php if($url=="articles" && $url2==""): ?>
+                                    <li><a href="<?php echo e(route('admin.articles.index')); ?>" style="<?php if($url=="articles" && $url2==""): ?>
                                         color:#fff;
                                     <?php else: ?>
                                     <?php endif; ?>">View Article</a></li>
@@ -76,7 +76,7 @@
                                 </a>
                             </li>
                             <li class="link <?php if($url=="tags"): ?> active <?php endif; ?>">
-                                <a href="<?php echo e(route('blog.admin.tags.index')); ?>">
+                                <a href="<?php echo e(route('admin.tags.index')); ?>">
                                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                                     <span class="hidden-xs hidden-sm">Tags</span>
                                 </a>

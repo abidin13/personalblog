@@ -29,8 +29,8 @@ class TagsController extends Controller
                 {
                     return view('blogs.admin._actionTags',[
                             'model'           => $tagsss,
-                            'form_url'        => route('blog.admin.tags.destroy', $tagsss->id),
-                            'edit_url'        => route('blog.admin.tags.edit', $tagsss->id),
+                            'form_url'        => route('admin.tags.destroy', $tagsss->id),
+                            'edit_url'        => route('admin.tags.edit', $tagsss->id),
                             'confirm_message' => 'Yakin mau menghapus ' .$tagsss->name .'?'
                         ]);
                 })->make(true);
@@ -67,7 +67,7 @@ class TagsController extends Controller
                                     "level"=>"success",
                                     "message"=>"Success $tagss->name"
                                     ]);
-        return redirect()->route('blog.admin.tags.index');
+        return redirect()->route('admin.tags.index');
     }
 
     /**

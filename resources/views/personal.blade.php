@@ -29,7 +29,7 @@
               <li><a href="#top">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#education">Education</a></li>
-              <li><a href="{{ url('/blog') }}" target="_blank">Blog</a></li>
+              <li><a href="{{ 'http://blog.personalblog.dev:8080' }}" target="_blank">Blog</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->

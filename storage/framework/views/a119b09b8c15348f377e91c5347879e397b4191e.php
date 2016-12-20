@@ -5,7 +5,7 @@
             <div class="col-xs-12">
                 <div class="form-wrap">
                 <h1>Log in with your email account</h1>
-                    <?php echo Form::open(['url'=>'blog/admin/postlogin', 'autocomplete'=>'off', 'id'=>'login-form']); ?>
+                    <?php echo Form::open(['url'=>'admin/postlogin', 'autocomplete'=>'off', 'id'=>'login-form']); ?>
 
                     <?php echo Form::hidden('_token', csrf_token()); ?>
 

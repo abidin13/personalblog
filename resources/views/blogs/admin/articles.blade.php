@@ -6,7 +6,7 @@
 	<div class="content-inner">
 		<div class="row">
 			<div class="col-md-12">
-                {!! Form::open(['url' => route('blog.admin.articles.store'), 'method' => 'post', 'files'=>'true' ,'class' => 'form-horizontal']) !!}
+                {!! Form::open(['url' => route('admin.articles.store'), 'method' => 'post', 'files'=>'true' ,'class' => 'form-horizontal']) !!}
     				@include('blogs.admin._formArticle')
 				{!! Form::close() !!}
 			</div>

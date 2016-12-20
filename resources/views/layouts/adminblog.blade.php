@@ -26,11 +26,11 @@
                         <h1 class="hidden-sm hidden-xs">Navigation</h1>
                         <ul>
                             <?php 
-                                $url = Request::segment(3);
-                                $url2 = Request::segment(4);
+                                $url = Request::segment(2);
+                                $url2 = Request::segment(3);
                             ?>
                             <li class="link @if($url=="dashboard") active @endif">
-                                <a href="{{route('blog.admin.dashboard.index')}}">
+                                <a href="{{route('admin.dashboard.index')}}">
                                     <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
                                     <span class="hidden-xs hidden-sm">Dashboard</span>
                                 </a>
@@ -42,9 +42,9 @@
                                     <span class="label label-success pull-right hidden-xs hidden-sm">20</span>
                                 </a>
                                 <ul class="collapse collapseable @if($url2=="create" || $url=="articles" ) in @endif" id="collapse-post">
-                                    <li><a href="{{ route('blog.admin.articles.create')}}" style="@if ($url2=="create") color: #fff;
+                                    <li><a href="{{ route('admin.articles.create')}}" style="@if ($url2=="create") color: #fff;
                                     @endif">Create New</a></li>
-                                    <li><a href="{{ route('blog.admin.articles.index')}}" style="@if ($url=="articles" && $url2=="")
+                                    <li><a href="{{ route('admin.articles.index')}}" style="@if ($url=="articles" && $url2=="")
                                         color:#fff;
                                     @else
                                     @endif">View Article</a></li>
@@ -75,7 +75,7 @@
                                 </a>
                             </li>
                             <li class="link @if($url=="tags") active @endif">
-                                <a href="{{ route('blog.admin.tags.index')}}">
+                                <a href="{{ route('admin.tags.index')}}">
                                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                                     <span class="hidden-xs hidden-sm">Tags</span>
                                 </a>

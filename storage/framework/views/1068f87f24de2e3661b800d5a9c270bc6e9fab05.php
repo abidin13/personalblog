@@ -5,7 +5,7 @@
 	<div class="content-inner">
 		<div class="row">
 			<div class="col-md-12">
-                <?php echo Form::open(['url' => route('blog.admin.articles.store'), 'method' => 'post', 'files'=>'true' ,'class' => 'form-horizontal']); ?>
+                <?php echo Form::open(['url' => route('admin.articles.store'), 'method' => 'post', 'files'=>'true' ,'class' => 'form-horizontal']); ?>
 
     				<?php echo $__env->make('blogs.admin._formArticle', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 				<?php echo Form::close(); ?>
