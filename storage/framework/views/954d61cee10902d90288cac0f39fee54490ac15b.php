@@ -1,6 +1,7 @@
-<div class="row">
-	<div class="col-md-8">
-		<div class="form-group <?php echo e($errors->has('name') ? ' has-error':''); ?>">
+<div class="col-md-8">
+	<div class="row">
+		<div class="col-md-12">
+				<div class="form-group <?php echo e($errors->has('name') ? ' has-error':''); ?>">
 			<?php echo csrf_field(); ?>
 
 			<div class="col-md-12">
@@ -51,10 +52,22 @@
 
 			</div>
 		</div>
+		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group pull-right">
+				<div class="col-md-12">
+			    	<?php echo Form::submit('Simpan', ['class'=>'btn btn-primary']); ?>
 
-	<div class="col-md-4">
-		<div class="form-group <?php echo e($errors->has('name') ? ' has-error':''); ?>">
+			    	<button type="button" onclick="goBack()" class="btn btn-default">Cancel</button>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-4">
+	<div class="form-group <?php echo e($errors->has('name') ? ' has-error':''); ?>">
 			<div class="col-md-12">
 				<?php echo Form::label('updated_at', 'Auto Publish', ['class'=>'']); ?>
 
@@ -96,17 +109,14 @@
 					</div>
 				</div>	
 			</div>
-		</div>
-	</div>
-
+</div>
 <div class="row">
 	<div class="col-md-8">
-		<div class="form-group pull-right">
-			<div class="col-md-12">
-		    	<?php echo Form::submit('Simpan', ['class'=>'btn btn-primary']); ?>
+	
+	</div>
 
-		    	<button type="button" onclick="goBack()" class="btn btn-default">Cancel</button>
-		  	</div>
+	<div class="col-md-4">
+		
 		</div>
 	</div>
-</div>
+
