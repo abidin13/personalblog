@@ -10,20 +10,14 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::group(['middlewareGroups' => 'web'], function() {
-    Route::get('/', function () {
-    	return view('personal');
-	});
-	// Route::get('/blog','BlogsController@index');
-	Route::get('/home', 'HomeController@index');
-	// Route::group(['prefix' => 'blog'], function() {
-	// 	Route::resource('shows','BlogsController');
-	// });
+    Route::group(['domain' => 'personalblog.dev'], function() {
+    	Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
+    });
 	Route::group(['domain' => 'blog.personalblog.dev'], function() {
-	    Route::get('','BlogsController@index');
+		Route::get('/', ['as' => 'blogs.home', 'uses' => 'BlogsController@index']);
 	    Route::resource('shows','BlogsController');
-		    Route::group(['prefix' => '/admin'], function() {
+		Route::group(['prefix' => '/admin'], function() {
 			// Route::auth();
 			Route::get('/', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@showLoginForm']);
 			Route::post('postlogin', ['as' => 'auth.postlogin', 'uses' => 'Auth\AuthController@login']);
@@ -45,4 +39,3 @@ Route::group(['middlewareGroups' => 'web'], function() {
 		});
 	});
 });
-

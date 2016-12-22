@@ -2,7 +2,7 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <?php foreach($post as $potss): ?>  
             <div class="post-preview">
-                <a href="<?php echo e(route('blog.shows.show', $potss->id)); ?>">
+                <a href="<?php echo e(route('shows.show', $potss->id)); ?>">
                     <h2 class="post-title">
                         <?php echo e($potss->post_title); ?>
 

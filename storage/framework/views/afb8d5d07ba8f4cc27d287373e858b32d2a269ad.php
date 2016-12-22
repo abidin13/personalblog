@@ -33,14 +33,14 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="<?php echo e(url ('/')); ?>"><;/></a>
+                <a class="navbar-brand" href="<?php echo e(route ('index')); ?>"><;/></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="<?php echo e(url ('/blog')); ?>">Blog</a>
+                        <a href="<?php echo e(route ('blogs.home')); ?>">Blog</a>
                     </li>
                 </ul>
             </div>
