@@ -41,7 +41,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">Opps, Sory Page Not Found.</div>
-                <a href="{{ url('/') }}">Go Back Home</a>
+                <a href="{{ route ('index') }}">Go Back Home</a>
             </div>
         </div>
     </body>

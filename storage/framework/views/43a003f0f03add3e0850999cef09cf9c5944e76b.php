@@ -41,7 +41,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">Opps, Sory Page Not Found.</div>
-                <a href="<?php echo e(url('/')); ?>">Go Back Home</a>
+                <a href="<?php echo e(route ('index')); ?>">Go Back Home</a>
             </div>
         </div>
     </body>
