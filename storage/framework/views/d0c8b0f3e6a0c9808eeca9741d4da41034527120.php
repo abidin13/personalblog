@@ -123,7 +123,7 @@
                     </a>
                     </li>
                     <li>
-                    <a href="<?php echo e(url('blog/admin/logout')); ?>" class="logout">
+                    <a href="<?php echo e(url('admin/logout')); ?>" class="logout">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                     Logout
                     </a>

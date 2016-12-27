@@ -122,7 +122,7 @@
                     </a>
                     </li>
                     <li>
-                    <a href="{{ url('blog/admin/logout') }}" class="logout">
+                    <a href="{{ url('admin/logout') }}" class="logout">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                     Logout
                     </a>
